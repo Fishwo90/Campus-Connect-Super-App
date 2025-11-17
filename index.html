@@ -175,27 +175,34 @@
                             </div>
                         </div>
 
-                        <div class="card shadow-sm border-secondary">
-                            <div class="card-body p-4">
-                                <h2 class="card-title h4 fw-semibold mb-3">Campus Weather</h2>
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div class="d-flex align-items-center gap-3">
-                                        <svg class="h-16 w-16 text-warning" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 64px; height: 64px;">
-                                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-6.364-.386l1.591-1.591M3 12H.75m.386-6.364l1.591 1.591M12 12a2.25 2.25 0 00-2.25 2.25v.01c0 1.12 1.1 1.99 2.25 1.99s2.25-.87 2.25-1.99v-.01a2.25 2.25 0 00-2.25-2.25z" />
-                                        </svg>
-                                        <div>
-                                            <div class="fs-1 fw-bold" id="weather-temp">--°F</div>
-                                            <div class="fs-6 text-body-secondary" id="weather-desc">Loading...</div>
-                                        </div>
-                                    </div>
-                                    <div class="text-end">
-                                        <div class="small text-body-secondary">High: <span class="fw-medium" id="weather-high">--°F</span></div>
-                                        <div class="small text-body-secondary">Low: <span class="fw-medium" id="weather-low">--°F</span></div>
-                                    </div>
-                                </div>
-                                <button id="refresh-weather-btn" class="btn btn-sm btn-outline-secondary mt-3">Refresh Weather</button>
-                            </div>
-                        </div>
+                        <!-- This is the NEW weather card you should paste in its place -->
+<div class="card shadow-sm border-secondary">
+    <div class="card-body p-4">
+        <h2 class="card-title h4 fw-semibold mb-3">Campus Weather</h2>
+        
+        <!-- Zip Code Input Form -->
+        <div class="input-group mb-3">
+            <input type="text" id="zip-code-input" class="form-control" placeholder="Enter Zip (e.g. 68467)" aria-label="Enter Zip Code">
+            <button class="btn btn-outline-primary" type="button" id="refresh-weather-btn">Get Weather</button>
+        </div>
+
+        <div class="d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center gap-3">
+                <svg class="h-16 w-16 text-warning" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 64px; height: 64px;">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-6.364-.386l1.591-1.591M3 12H.75m.386-6.364l1.591 1.591M12 12a2.25 2.25 0 00-2.25 2.25v.01c0 1.12 1.1 1.99 2.25 1.99s2.25-.87 2.25-1.99v-.01a2.25 2.25 0 00-2.25-2.25z" />
+                </svg>
+                <div>
+                    <div class="fs-1 fw-bold" id="weather-temp">--°F</div>
+                    <div class="fs-6 text-body-secondary" id="weather-desc">Enter Zip</div>
+                </div>
+            </div>
+            <div class="text-end">
+                <div class="small text-body-secondary">High: <span class="fw-medium" id="weather-high">--°F</span></div>
+                <div class="small text-body-secondary">Low: <span class="fw-medium" id="weather-low">--°F</span></div>
+            </div>
+        </div>
+    </div>
+</div>
 
                     </div>
                 </div>
