@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Connect - My Courses</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body class="d-flex flex-column h-100" data-bs-theme="dark">
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top">
+            <div class="container-fluid max-w-7xl">
+                <a class="navbar-brand d-flex align-items-center" href="index.html">
+                    <svg class="h-8 w-8 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 32px; height: 32px; color: #6366f1;">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c.29 0 .576-.023.857-.068M12 21c-.29 0-.576-.023-.857-.068m0 0A9.006 9.006 0 003 12c0-1.152.21-2.26.602-3.297M3.602 8.703A9.005 9.005 0 0112 3c1.152 0 2.26.21 3.297.602m3.101 5.101A9.005 9.005 0 0121 12c0 1.152-.21 2.26-.602 3.297M20.398 15.297A9.005 9.005 0 0112 21c-1.152 0-2.26-.21-3.297-.602m14.2-11.396A9.005 9.005 0 0012 3c-1.152 0-2.26.21-3.297.602m0 0A9.006 9.006 0 003 12c0 1.152.21 2.26.602 3.297m0 0A9.006 9.006 0 0112 21c1.152 0 2.26-.21 3.297-.602m0 0A9.005 9.005 0 0021 12c0-1.152-.21 2.26-.602 3.297m0 0A9.005 9.005 0 0112 3c1.152 0 2.26.21 3.297.602" />
+                    </svg>
+                    <span class="ms-2 fs-4 fw-bold">CampusConnect</span>
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mobile-menu" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="mobile-menu">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="events.html">Events</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="updates.html">Updates</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="courses.html">My Courses</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="profile.html">Profile</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-grow-1 py-4">
+        <div class="container-fluid max-w-7xl">
+            
+            <div class="mb-4">
+                <h1 class="display-5 fw-bold">My Courses</h1>
+                <p class="fs-5 text-body-secondary">Your Spring 2026 Schedule</p>
+            </div>
+
+            <div class="row g-4">
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100 shadow-sm border-secondary">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold text-primary">CS-101: Intro to Computer Science</h5>
+                            <p class="card-text text-body-secondary">
+                                <span class="fw-medium">Professor:</span> Dr. Ada Lovelace<br>
+                                <span class="fw-medium">Time:</span> MWF 10:00 AM - 10:50 AM<br>
+                                <span class="fw-medium">Location:</span> Johnson Hall 202
+                            </p>
+                            <a href="#" class="btn btn-primary mt-auto">View Syllabus</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100 shadow-sm border-secondary">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold text-primary">MATH-210: Calculus II</h5>
+                            <p class="card-text text-body-secondary">
+                                <span class="fw-medium">Professor:</span> Dr. Alan Turing<br>
+                                <span class="fw-medium">Time:</span> T/Th 1:00 PM - 2:15 PM<br>
+                                <span class="fw-medium">Location:</span> Science Center 150
+                            </p>
+                            <a href="#" class="btn btn-primary mt-auto">Go to Canvas</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100 shadow-sm border-secondary">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold text-primary">ENGL-150: The Art of the Essay</h5>
+                            <p class="card-text text-body-secondary">
+                                <span class="fw-medium">Professor:</span> Dr. Mary Shelley<br>
+                                <span class="fw-medium">Time:</span> MWF 2:00 PM - 2:50 PM<br>
+                                <span class="fw-medium">Location:</span> Humanities Bldg 310
+                            </p>
+                            <a href="#" class="btn btn-primary mt-auto">View Syllabus</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer mt-auto py-3 bg-dark shadow-inner">
+        <div class="container-fluid max-w-7xl">
+            <p class="text-center text-body-secondary small mb-0">&copy; 2025 CampusConnect. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
+    <script src="js/script.js"></script>
+</body>
+</html>
