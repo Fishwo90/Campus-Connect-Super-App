@@ -1,38 +1,45 @@
 /*
-    Mockup Weather API
+    Campus Connect Weather Integration
+    Full ready-to-use script.js
 */
 
-// Wait for the DOM (HTML structure) to be fully loaded before running scripts
+// Wait for the DOM to load
 document.addEventListener('DOMContentLoaded', () => {
-    
     console.log('Campus Connect App script loaded!');
-    
 
+    const refreshButton = document.getElementById('refresh-weather-btn');
+    const zipCodeInput = document.getElementById('zip-code-input');
 
-// Find the elements on the page (if they exist)
-const refreshButton = document.getElementById('refresh-weather-btn');
-const zipCodeInput = document.getElementById('zip-code-input');
+    if (refreshButton) {
+        // Click event for refresh button
+        refreshButton.addEventListener('click', () => {
+            const zipCode = zipCodeInput.value || '68467'; // default ZIP
+            fetchWeather(zipCode);
+        });
 
-// Check if the button exists on the current page (it's only on index.html)
-if (refreshButton) {
-    // Add a 'click' event listener to the button.
-    refreshButton.addEventListener('click', () => {
-        const zipCode = zipCodeInput.value || '68467'; // Use input value or a default
-        console.log(`Refresh weather button clicked for zip: ${zipCode}`);
-        fetchWeather(zipCode);
-    });
+        // Fetch default weather on page load
+        fetchWeather('68467');
+    }
+});
 
-    // Also fetch weather on page load with a default
-    fetchWeather('68467');
+// Convert ZIP code to latitude and longitude using Zippopotam.us
+async function getCoordinates(zip) {
+    try {
+        const res = await fetch(`https://api.zippopotam.us/us/${zip}`);
+        if (!res.ok) throw new Error("Invalid ZIP code");
+        const data = await res.json();
+        return {
+            lat: parseFloat(data.places[0].latitude),
+            lon: parseFloat(data.places[0].longitude)
+        };
+    } catch (err) {
+        console.error("ZIP lookup failed:", err);
+        return { lat: 40.86, lon: -97.59 }; // fallback to default
+    }
 }
 
-// --- API Integration Placeholder ---
-// This function is a placeholder for your API call.
-// It now accepts a 'zip' parameter.
-// REAL API Integration using Open-Meteo
+// Fetch weather using Open-Meteo API
 async function fetchWeather(zip) {
-    console.log(`Fetching REAL weather data for ZIP: ${zip}`);
-
     const tempEl = document.getElementById('weather-temp');
     const descEl = document.getElementById('weather-desc');
     const highEl = document.getElementById('weather-high');
@@ -44,19 +51,23 @@ async function fetchWeather(zip) {
     if(highEl) highEl.textContent = '--°F';
     if(lowEl) lowEl.textContent = '--°F';
 
+    // Get coordinates for the ZIP
+    const { lat, lon } = await getCoordinates(zip);
+
     try {
         const response = await fetch(
-            `https://api.open-meteo.com/v1/forecast?latitude=40.86&longitude=-97.59&daily=temperature_2m_max,temperature_2m_min&current_weather=true&temperature_unit=fahrenheit`
+            `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=temperature_2m_max,temperature_2m_min&current_weather=true&temperature_unit=fahrenheit`
         );
 
+        if (!response.ok) throw new Error("Weather API request failed");
+
         const data = await response.json();
-        console.log("Real weather data:", data);
+        console.log("Weather data:", data);
 
-        const temp = data.current_weather.temperature;
-        const high = data.daily.temperature_2m_max[0];
-        const low = data.daily.temperature_2m_min[0];
+        const temp = data.current_weather?.temperature ?? '--';
+        const high = data.daily?.temperature_2m_max[0] ?? '--';
+        const low = data.daily?.temperature_2m_min[0] ?? '--';
 
-        // Update the HTML
         tempEl.textContent = `${temp}°F`;
         descEl.textContent = "Current Conditions";
         highEl.textContent = `${high}°F`;
@@ -64,7 +75,9 @@ async function fetchWeather(zip) {
 
     } catch (error) {
         console.error("Weather API failed:", error);
-        descEl.textContent = "Failed to load weather.";
+        if(descEl) descEl.textContent = "Failed to load weather.";
+        if(tempEl) tempEl.textContent = '--°F';
+        if(highEl) highEl.textContent = '--°F';
+        if(lowEl) lowEl.textContent = '--°F';
     }
 }
-
