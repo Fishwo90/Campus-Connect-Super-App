@@ -29,30 +29,42 @@ if (refreshButton) {
 // --- API Integration Placeholder ---
 // This function is a placeholder for your API call.
 // It now accepts a 'zip' parameter.
-function fetchWeather(zip) {
-    console.log(`Attempting to fetch weather data for ${zip}...`);
+// REAL API Integration using Open-Meteo
+async function fetchWeather(zip) {
+    console.log(`Fetching REAL weather data for ZIP: ${zip}`);
 
-    // Get the elements to update
     const tempEl = document.getElementById('weather-temp');
     const descEl = document.getElementById('weather-desc');
     const highEl = document.getElementById('weather-high');
     const lowEl = document.getElementById('weather-low');
 
-    // Show a loading state
+    // Show loading state
     if(descEl) descEl.textContent = 'Refreshing...';
     if(tempEl) tempEl.textContent = '--°F';
     if(highEl) highEl.textContent = '--°F';
     if(lowEl) lowEl.textContent = '--°F';
 
-    
+    try {
+        const response = await fetch(
+            `https://api.open-meteo.com/v1/forecast?latitude=40.86&longitude=-97.59&daily=temperature_2m_max,temperature_2m_min&current_weather=true&temperature_unit=fahrenheit`
+        );
 
-  //mock API data as a placeholder
-    setTimeout(() => {
-        console.log('Mock API data returned.');
-        if(tempEl) tempEl.textContent = '73°F';
-        if(descEl) descEl.textContent = 'Sunny';
-        if(highEl) highEl.textContent = '75°F';
-        if(lowEl) lowEl.textContent = '58°F';
-    }, 1500); // 1.5-second delay
+        const data = await response.json();
+        console.log("Real weather data:", data);
+
+        const temp = data.current_weather.temperature;
+        const high = data.daily.temperature_2m_max[0];
+        const low = data.daily.temperature_2m_min[0];
+
+        // Update the HTML
+        tempEl.textContent = `${temp}°F`;
+        descEl.textContent = "Current Conditions";
+        highEl.textContent = `${high}°F`;
+        lowEl.textContent = `${low}°F`;
+
+    } catch (error) {
+        console.error("Weather API failed:", error);
+        descEl.textContent = "Failed to load weather.";
+    }
 }
 
